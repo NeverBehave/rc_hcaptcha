@@ -2,6 +2,8 @@
 
 Adds hCaptcha to the RoundCube login form
 
+Based on: https://github.com/sjinks/roundcube_recaptcha
+
 # Installation
 
 See "Getting Started" on [https://plugins.roundcube.net/](https://plugins.roundcube.net/)
@@ -10,7 +12,7 @@ Plugin name is "neverbehave/rc_hcaptcha"
 
 # Configuration
 
-Edit `config.inc.php` file in <Your-roundcube-install-basepath>/plugins/hcaptcha:
+Edit `config.inc.php` file in <Your-roundcube-install-basepath>/plugins/rc_hcaptcha:
 
 ```php
 <?php
