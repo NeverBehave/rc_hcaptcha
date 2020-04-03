@@ -20,7 +20,6 @@
 	"require": {
 		"php": ">=7.0",
 		"roundcube/plugin-installer": ">=0.1.6",
-		"cloudflare/cf-ip-rewrite": "^1.0",
-		"neverbehave/hcaptcha": ">=0.0.1"
+		"cloudflare/cf-ip-rewrite": "^1.0"
 	}
 }
