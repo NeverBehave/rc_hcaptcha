@@ -1,22 +1,22 @@
 <?php
 
-class hcaptcha extends rcube_plugin
+class rc_hcaptcha extends rcube_plugin
 {
     public function init()
     {
         $this->load_config();
 
         $rcmail = rcmail::get_instance();
-        if ($rcmail->config->get('hcaptcha_public_key') != '' && $rcmail->config->get('hcaptcha_secret_key') != '') {
+        #if ($rcmail->config->get('hcaptcha_site_key') != '' && $rcmail->config->get('hcaptcha_secret_key') != '') {
             $this->add_hook('template_object_loginform', [$this, 'template_object_loginform']);
             $this->add_hook('authenticate', [$this, 'authenticate']);
-        }
+       # }
     }
 
     public function template_object_loginform(array $loginform): array
     {
         $rcmail = rcmail::get_instance();
-        $key = $rcmail->config->get('hcaptcha_public_key');
+        $key = $rcmail->config->get('hcaptcha_site_key');
         $theme = $rcmail->config->get('hcaptcha_theme') ?? 'light';
         $src = "https://hcaptcha.com/1/api.js?hl=" . urlencode($rcmail->user->language);
         $script = html::tag('script', ['type' => "text/javascript", 'src' => $src]);
@@ -35,10 +35,10 @@ class hcaptcha extends rcube_plugin
     {
         $rcmail = rcmail::get_instance();
         $secret = $rcmail->config->get('hcaptcha_secret_key');
-        $hcaptcha = new \neverbehave\Hcaptcha($secret);
         $cf = new \CloudFlare\IpRewrite();
+        $hcaptcha = new \neverbehave\Hcaptcha($secret);
 
-        $response = filter_input(INPUT_POST, 'g-hcaptcha-response');
+        $response = filter_input(INPUT_POST, 'h-captcha-response');
         $ip = $cf->isCloudFlare() ? $cf->getRewrittenIP() : rcube_utils::remote_addr();
         $result = null;
         if ($rcmail->config->get('hcaptcha_send_client_ip')) {
@@ -52,7 +52,7 @@ class hcaptcha extends rcube_plugin
         }
 
         $this->add_texts('localization/');
-        $rcmail->output->show_message('hcaptcha.hcaptchafailed', 'error');
+        $rcmail->output->show_message('rc_hcaptcha.hcaptchafailed', 'error');
         $rcmail->output->set_env('task', 'login');
         $rcmail->output->send('login');
         return null;

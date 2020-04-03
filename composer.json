@@ -14,7 +14,7 @@
 		},
 		{
 			"type": "vcs",
-			"url": "https://github.com/neverbehave/roundcube_hcaptcha.git"
+			"url": "https://github.com/neverbehave/rc_hcaptcha.git"
 		}
 	],
 	"require": {

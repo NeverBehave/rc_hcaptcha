@@ -1,4 +1,4 @@
-# roundcube_hcaptcha
+# rc_hcaptcha
 
 Adds hCaptcha to the RoundCube login form
 
