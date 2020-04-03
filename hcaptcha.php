@@ -17,8 +17,7 @@ class hcaptcha extends rcube_plugin
     {
         $rcmail = rcmail::get_instance();
         $key = $rcmail->config->get('hcaptcha_public_key');
-        $theme = $rcmail->config->get('hcaptcha_theme') ?? 'dark';
-
+        $theme = $rcmail->config->get('hcaptcha_theme') ?? 'light';
         $src = "https://hcaptcha.com/1/api.js?hl=" . urlencode($rcmail->user->language);
         $script = html::tag('script', ['type' => "text/javascript", 'src' => $src]);
         $this->include_script($src);
@@ -43,9 +42,9 @@ class hcaptcha extends rcube_plugin
         $ip = $cf->isCloudFlare() ? $cf->getRewrittenIP() : rcube_utils::remote_addr();
         $result = null;
         if ($rcmail->config->get('hcaptcha_send_client_ip')) {
-            $result = $hcaptcha->challenge($response);
-        } else {
             $result = $hcaptcha->challenge($response, $ip);
+        } else {
+            $result = $hcaptcha->challenge($response);
         }
 
         if ($result->isSuccess()) {
