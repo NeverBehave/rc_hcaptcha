@@ -1,22 +1,22 @@
-# roundcube_recaptcha
+# roundcube_hcaptcha
 
-Adds reCAPTCHA to the RoundCube login form
+Adds hCaptcha to the RoundCube login form
 
 # Installation
 
 See "Getting Started" on [https://plugins.roundcube.net/](https://plugins.roundcube.net/)
 
-Plugin name is "wildwolf/recaptcha"
+Plugin name is "neverbehave/rc_hcaptcha"
 
 # Configuration
 
-Edit `config.inc.php` file in <Your-roundcube-install-basepath>/plugins/recaptcha:
+Edit `config.inc.php` file in <Your-roundcube-install-basepath>/plugins/hcaptcha:
 
 ```php
 <?php
-// See https://www.google.com/recaptcha/
-// See https://developers.google.com/recaptcha/docs/display
-$rcmail_config['recaptcha_public_key'] = 'sitekey form https://www.google.com/recaptcha/admin';
-$rcmail_config['recaptcha_secret_key'] = 'secret from https://www.google.com/recaptcha/admin';
-$rcmail_config['recaptcha_theme']      = 'dark or light';
+// See https://hcaptcha.com/
+$rcmail_config['hcaptcha_site_key'] = 'Your SITE KEY';
+$rcmail_config['hcaptcha_secret_key'] = 'Your Secret Key';
+$remail_config['hcaptcha_send_client_ip'] = false; // Set true to Sent Client IP to Hcaptcha
+$rcmail_config['hcaptcha_theme']  = 'light';  // dark
 ```

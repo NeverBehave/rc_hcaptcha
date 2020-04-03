@@ -1,6 +1,6 @@
 <?php
-// See https://www.google.com/recaptcha/
-// See https://developers.google.com/recaptcha/docs/display
-$rcmail_config['recaptcha_public_key'] = '';
-$rcmail_config['recaptcha_secret_key'] = '';
-$rcmail_config['recaptcha_theme']      = 'dark';
+// See https://hcaptcha.com/
+$rcmail_config['hcaptcha_site_key'] = '';
+$rcmail_config['hcaptcha_secret_key'] = '';
+$remail_config['hcaptcha_send_client_ip'] = false;
+$rcmail_config['hcaptcha_theme']  = 'light';

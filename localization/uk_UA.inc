@@ -1,5 +1,5 @@
 <?php
 $labels   = [];
 $messages = [
-    'recaptchafailed' => 'Перевірку reCAPTCHA не пройдено.',
+    'hcaptchafailed' => 'Перевірку Hcaptcha не пройдено.',
 ];
